@@ -1,3 +1,3 @@
 #!/usr/bin/python3
-number = 98
+number = f"{7*7*2}"
 print(f"{number} Battery street")
