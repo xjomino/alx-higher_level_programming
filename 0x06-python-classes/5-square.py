@@ -1,6 +1,13 @@
 #!/usr/bin/python3
+"""define class Square"""
+
+
 class Square:
+    """Defines a square:"""
+
     def __init__(self, size=0):
+        """Initializer object"""
+
         self._size = size
 
     @property
@@ -16,9 +23,12 @@ class Square:
         self._size = value
 
     def area(self):
+        """return area of the Square in the atribute private __size"""
+
         return self._size ** 2
 
     def my_print(self):
+        """Print a square with self.__size"""
         if self._size == 0:
             print()
         else:
