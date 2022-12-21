@@ -8,8 +8,8 @@ class Square:
     def __init__(self, size=0, position=(0, 0)):
         """Initializer object"""
 
-        self._size = size
-        self._position = position
+        self.__size = size
+        self.__position = position
 
     @property
     def size(self):
@@ -19,7 +19,7 @@ class Square:
         attribute it is modifiable.
         """
 
-        return self._size
+        return self.__size
 
     @size.setter
     def size(self, value):
@@ -29,7 +29,7 @@ class Square:
             raise TypeError("size must be an integer")
         if value < 0:
             raise ValueError("size must be >= 0")
-        self._size = value
+        self.__size = value
 
     @property
     def position(self):
@@ -39,11 +39,12 @@ class Square:
         way that a public attribute is modifiable.
         """
 
-        return self._position
+        return self.__position
 
     @position.setter
     def position(self, value):
         """assigns the value to the position variable"""
+
         if not isinstance(value, tuple) or len(value) != 2 or not all\
                 (isinstance(i, int) and i >= 0 for i in value):
             raise TypeError("position must be a tuple of 2 positive integers")
@@ -52,13 +53,19 @@ class Square:
     def area(self):
         """return area of the Square in the atribute private __size"""
 
-        return self._size ** 2
+        return self.__size ** 2
 
     def my_print(self):
-        if self._size == 0:
+        """Print a square with size of self.__size
+        and if self.position[1] is greater than 0
+        print a line break and if size is less
+        than or equal to 0 print line break.
+        """
+
+        if self.__size == 0:
             print()
         else:
-            for i in range(self._position[1]):
+            for i in range(self.__position[1]):
                 print()
-            for i in range(self._size):
-                print(" " * self._position[0] + "#" * self._size)
+            for i in range(self.__size):
+                print(" " * self.__position[0] + "#" * self.__size)
