@@ -7,4 +7,4 @@ class Square:
 
     def __init__(self, size):
         """Atributes of the object"""
-        self._size = size
+        self.__size = size
