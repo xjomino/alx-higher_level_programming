@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 """define class Square"""
 
 
@@ -10,6 +10,11 @@ class Square:
 
         self.__size = size
         self.__position = position
+
+    def area(self):
+        """return area of the Square in the atribute private __size"""
+
+        return self.__size ** 2
 
     @property
     def size(self):
@@ -25,16 +30,32 @@ class Square:
     def size(self, value):
         """assigns the value to the size variable"""
 
-        if not isinstance(value, int):
+        if type(value) is not int:
             raise TypeError("size must be an integer")
-        if value < 0:
+        elif value < 0:
             raise ValueError("size must be >= 0")
         self.__size = value
+
+    def my_print(self):
+        """Print a square with size of self.__size
+        and if self.position[1] is greater than 0
+        print a line break and if size is less
+        than or equal to 0 print line break.
+        """
+
+        position = self.position[0]
+        size = self.size
+        [print('\n', end='') for _ in range(self.position[1])]
+
+        for _ in range(self.size):
+            for _ in range(position):
+                print(' ', end='')
+            print(size * '#')
 
     @property
     def position(self):
         """makes the private attribute self
-        position a readable variable in
+        .__position a readable variable in
         the way self.position and in the same
         way that a public attribute is modifiable.
         """
@@ -45,27 +66,6 @@ class Square:
     def position(self, value):
         """assigns the value to the position variable"""
 
-        if not isinstance(value, tuple) or len(value) != 2 or not all\
-                (isinstance(i, int) and i >= 0 for i in value):
+        if type(value) is not tuple or len(value) > 1:
             raise TypeError("position must be a tuple of 2 positive integers")
-        self._position = value
-
-    def area(self):
-        """return area of the Square in the atribute private __size"""
-
-        return self.__size ** 2
-
-    def my_print(self):
-        """Print a square with size of self.__size
-        and if self.position[1] is greater than 0
-        print a line break and if size is less
-        than or equal to 0 print line break.
-        """
-
-        if self.__size == 0:
-            print()
-        else:
-            for i in range(self.__position[1]):
-                print()
-            for i in range(self.__size):
-                print(" " * self.__position[0] + "#" * self.__size)
+        self.position = value
