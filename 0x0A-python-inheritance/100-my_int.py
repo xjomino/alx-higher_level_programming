@@ -9,6 +9,7 @@ class MyInt(int):
         """ equal to negation """
 
         return not super().__eq__(other)
+
     def __ne__(self, other):
         """ negation to equal """
 
