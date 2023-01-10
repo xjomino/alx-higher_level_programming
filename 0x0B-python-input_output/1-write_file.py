@@ -1,5 +1,11 @@
 #!/usr/bin/python3
+"""write to a file"""
+
+
 def write_file(filename="", text=""):
-    with open(filename, "w", encoding="utf8") as file:
-        num_chars = file.write(text)
-        return num_chars
+    """ writes a string to a text file (UTF8) and
+    returns the number of characters written
+    """
+
+    with open(filename, mode="w", encoding="utf-8") as file:
+        return file.write(text)
