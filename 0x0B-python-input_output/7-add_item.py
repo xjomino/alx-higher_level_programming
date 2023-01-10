@@ -1,18 +1,37 @@
 #!/usr/bin/python3
+"""adds arguments and save into file"""
 import json
-import sys
+from sys import argv
+
 
 def save_to_json_file(my_obj, filename):
-    with open(filename, "w") as file:
+    """a function that writes an Object
+    to a text file, using a JSON representation
+    """
+
+    with open(filename, mode="w") as file:
         json.dump(my_obj, file)
 
+
 def load_from_json_file(filename):
-    with open(filename, "r") as file:
+    """function that creates an Object
+    from a “JSON file”
+    """
+
+    with open(filename, mode="r") as file:
         return json.load(file)
-#add items to list
-items = load_from_json_file("add_item.json") 
-if os.path.isfile("add_item.json") else []
-for item in sys.argv[1:]:
-    items.append(item)
-#save items to file
-save_to_json_file(items, "add_item.json")
+
+
+argv.pop(0)
+
+
+try:
+    deserialized = load_from_json_file("add_item.json")
+
+    if deserialized is None:
+        save_to_json_file(argv, "add_item.json")
+    else:
+        deserialized.extend(argv)
+        save_to_json_file(deserialized, "add_item.json")
+except FileNotFoundError:
+    save_to_json_file(argv, "add_item.json")
