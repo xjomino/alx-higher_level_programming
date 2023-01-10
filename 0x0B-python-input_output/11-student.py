@@ -26,4 +26,4 @@ class Student:
         """
         replaces all attributes into student instance
         """
-        dict.update(json)
+        vars(self).update(json)
