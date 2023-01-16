@@ -17,3 +17,9 @@ How to import from module:
     3
     >>> add_integer(1.5, 2.5)
     3
+    >>> add_integer(-100010, -5)
+    -100015
+    >>> add_integer(-5555, 4444)
+    -1111
+    >>> add_integer(-99, -99)
+    -198
