@@ -1,0 +1,19 @@
+===============================================
+0-add-integer
+===============================================
+This function adds two integer: a and b. Both must be floats or integers.
+If an TypeError is raised must display error message.
+How to import from module:
+
+	>>> add_integer = __import__('0-add_integer').add_integer
+
+    >>> add_integer(1, 2)
+    3
+    >>> add_integer(-1, 2)
+    1
+    >>> add_integer(1.5, 2)
+    3
+    >>> add_integer(1, 2.5)
+    3
+    >>> add_integer(1.5, 2.5)
+    3
